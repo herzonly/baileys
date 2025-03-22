@@ -326,7 +326,8 @@ export const makeMessagesSocket = (config: SocketConfig) => {
 		const isNewsletter = server == 'newsletter'
 		const isStatus = jid === statusJid
 		const isLid = server === 'lid'
-
+                const isPerson = server === 's.whatsapp.net'
+		
 		msgId = msgId || generateMessageIDV2(sock.user?.id)
 		useUserDevicesCache = useUserDevicesCache !== false
 		useCachedGroupMetadata = useCachedGroupMetadata !== false && !isStatus
