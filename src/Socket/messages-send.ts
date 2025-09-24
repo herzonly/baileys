@@ -857,7 +857,7 @@ export const makeMessagesSocket = (config: SocketConfig) => {
 						}
 					}])
 					const metadata = getBinaryNodeChild(groups, 'group')
-					const expiration = getBinaryNodeChild(metadata, 'ephemeral')?.attrs?.expiration || 0
+					const expiration = getBinaryNodeChild(metadata, 'ephemeral')?.attrs?.expiration || Date.now()
 					options.ephemeralExpiration = expiration
 				}
 			}
@@ -959,6 +959,7 @@ export const makeMessagesSocket = (config: SocketConfig) => {
 					{
 						logger,
 						userJid,
+						ephemeralExpiration: Date.now(),
 						getUrlInfo: text => getUrlInfo(
 							text,
 							{
